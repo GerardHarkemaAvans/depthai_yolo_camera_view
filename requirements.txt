@@ -1,4 +1,8 @@
-
+argparse
 depthai
 opencv-python
 json
+depthai
+numpy
+time
+sys
