@@ -1,5 +1,13 @@
 #!/usr/bin/env python3
 
+'''
+main.py
+Purpose: detects objects using yoloVx network from .blob files
+@author Gerard Harkema
+@version 0.9 2023/03/28
+License: CC BY-NC-SA
+'''
+
 # Import the library
 import argparse
 import os.path
@@ -19,19 +27,20 @@ def main():
 	parser.add_argument('-b', type=str, required=True)
 	# Parse the argument
 	args = parser.parse_args()
-	# Print "Hello" + the user input argument
 	blob_filename = args.b
 	json_filename = args.j
-	#print('Hello,', blob_filename, json_filename)
+
 	if(not os.path.isfile(blob_filename)):
 		print('Error: File', blob_filename, 'does not exist')
 		return
+
 	if(not os.path.isfile(json_filename)):
 		print('Error: File', json_filename, 'does not exist')
 		return
 	f = open(json_filename)
 	jsonData = json.load(f)
 	f.close()
+
 	#print(jsonData)
 	numClasses = jsonData["nn_config"]["NN_specific_metadata"]["classes"]
 	print('numClasses:', numClasses)
@@ -98,7 +107,8 @@ def main():
 	spatialDetectionNetwork.setBoundingBoxScaleFactor(0.5)
 	spatialDetectionNetwork.setDepthLowerThreshold(100)
 	spatialDetectionNetwork.setDepthUpperThreshold(5000)
-
+	#spatialDetectionNetwork.setSpatialCalculationAlgorithm(dai.SpatialLocationCalculatorAlgorithm.AVERAGE) # AVERAGE/MIN/MAX
+	
 	# Yolo specific parameters
 	spatialDetectionNetwork.setNumClasses(numClasses)
 	spatialDetectionNetwork.setCoordinateSize(coordinateSize)
@@ -170,8 +180,8 @@ def main():
 			height = frame.shape[0]
 			width  = frame.shape[1]
 			for detection in detections:
-				roijsonData = detection.boundingBoxMapping
-				roi = roijsonData.roi
+				roData = detection.boundingBoxMapping
+				roi = roData.roi
 				roi = roi.denormalize(depthFrameColor.shape[1], depthFrameColor.shape[0])
 				topLeft = roi.topLeft()
 				bottomRight = roi.bottomRight()
