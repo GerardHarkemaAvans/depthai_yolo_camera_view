@@ -12,11 +12,6 @@ This repository contains the code for running Yolo object detection with on-devi
 
 We use the same style of JSON parsing in `main.py`, but you can also set the values in both cases manually in the code.
 
-
-### Export your model
-
-Download your model from your personal google drive.
-
 ## Usage
 
 1. Install requirements
