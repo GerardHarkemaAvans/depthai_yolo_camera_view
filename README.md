@@ -20,7 +20,7 @@ Download your model from your personal google drive.
 ## Usage
 
 1. Install requirements
-	```python
+	```
 	python3 -m pip install -r requirements.txt
 	```
 2. Run the script
@@ -34,7 +34,7 @@ Download your model from your personal google drive.
 
 ## Example
    
-    ```python
+    ```
     python3 main.py -b SimpleFruitsv1.blob -j SimpleFruitsv1.json
     ```
 
