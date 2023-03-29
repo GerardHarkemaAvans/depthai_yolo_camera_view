@@ -25,7 +25,6 @@ Download your model from your personal google drive.
 	```
 2. Run the script
     ```
-
     python3 main.py -b <blob_name> --j <json_name>
     ```
     where:
@@ -35,7 +34,7 @@ Download your model from your personal google drive.
 
 ## Example
    
-    ```
+    ```python
     python3 main.py -b SimpleFruitsv1.blob -j SimpleFruitsv1.json
     ```
 
