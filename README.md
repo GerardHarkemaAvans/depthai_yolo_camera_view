@@ -13,20 +13,9 @@ This repository contains the code for running Yolo object detection with on-devi
 We use the same style of JSON parsing in `main.py`, but you can also set the values in both cases manually in the code.
 
 
-## Yolo with DepthAI SDK tutorial
-
-I have trained my own object detection model by following the
-[My_YoloV5_training.ipynb](https://colab.research.google.com/drive/1aT4W-coZ4yOy8CvZbr0pd4W_4gdZCWzC?usp=sharing) notebook. After downloading the `.pt` file from the notebook,
-
-
-Then I ran `python main.py --config model/yolov6n.json` to run the model inference (object detection) on the OAK camera, and got these two frames:
-
-![image](https://user-images.githubusercontent.com/18037362/209836980-c4ab8ffe-faab-4feb-9a8e-1ba9227f7fd7.png)
-
-To configure the pipeline, you can edit `main.py` script, and SDK documentation can be [found here](https://docs.luxonis.com/projects/sdk/en/latest/).
-
 ### Export your model
 
+Download your model from your personal google drive.
 
 ## Usage
 
@@ -44,6 +33,11 @@ To configure the pipeline, you can edit `main.py` script, and SDK documentation 
     * `<blob_name>` is the **name of the model** openVino blob file.
     * `<json_name>` is the **relative path** to the JSON with metadata (input shape, anchors, labels, ...) of the Yolo model.
 
+## Example
+   
+    ```
+    python3 main.py -b SimpleFruitsv1.blob -j SimpleFruitsv1.json
+    ```
 
 ## JSONs
 
@@ -57,4 +51,3 @@ You can also change IOU and confidence thresholds. Increase the IOU threshold if
 
 DepthAI enables you to take the advantage of depth information and get `x`, `y`, and `z` coordinates of detected objects. Experiments in this directory are not using the depth information. If you are interested in using the depth information with Yolo detectors, please check our [documentation](https://docs.luxonis.com/projects/api/en/latest/samples/SpatialDetection/spatial_tiny_yolo/#rgb-tinyyolo-with-spatial-data).
 
-![SpatialObjectDetection](https://user-images.githubusercontent.com/56075061/144864639-4519699e-d3da-4172-b66b-0495ea11317e.png)
